@@ -1,120 +1,136 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visite virtuelle appartement Rue Falque</title>
 
-<title>Visite virtuelle appartement Rue Falque</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
 
-<style>
-body{
-    font-family: Arial, sans-serif;
-    background:#f5f5f5;
-    margin:0;
-    padding:20px;
-}
+        .container {
+            max-width: 1400px;
+            margin: auto;
+        }
 
-.container{
-    max-width:1400px;
-    margin:auto;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-h1{
-    text-align:center;
-    margin-bottom:30px;
-}
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-.menu{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:10px;
-    margin-bottom:20px;
-}
+        button {
+            background: #1f6feb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            font-size: 15px;
+        }
 
-button{
-    background:#1f6feb;
-    color:white;
-    border:none;
-    border-radius:8px;
-    padding:12px;
-    cursor:pointer;
-    font-size:16px;
-}
+        button:hover {
+            background: #1558c0;
+        }
 
-button:hover{
-    background:#1856b8;
-}
+        .viewer {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
 
-.viewer{
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.15);
-}
+        #photo {
+            width: 100%;
+            max-height: 75vh;
+            object-fit: contain;
+            background: #000;
+            border-radius: 8px;
+        }
 
-#photo{
-    width:100%;
-    max-height:75vh;
-    object-fit:contain;
-    background:black;
-    border-radius:8px;
-}
+        #titre {
+            margin-top: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-#titre{
-    margin-top:15px;
-    font-size:24px;
-    font-weight:bold;
-}
-
-#description{
-    color:#555;
-}
-</style>
+        #description {
+            margin-top: 10px;
+            color: #555;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>Visite virtuelle appartement Rue Falque</h1>
+    <h1>Visite virtuelle appartement Rue Falque</h1>
 
-<div class="menu">
-<button onclick="showRoom('Hall d’entrée','Vue du hall d’entrée','hall-entree.jpeg')">Hall</button>
+    <div class="menu">
+        <button onclick="showRoom('Hall d’entrée','Le hall dessert de gauche à droite : Chambre 1, Chambre 2, Salon, Chambre 3, Cuisine et Salle de bains.','hall-entree.jpeg')">
+            Hall
+        </button>
 
-<button onclick="showRoom('Chambre 1','Première chambre','chambre1.jpeg')">Chambre 1</button>
+        <button onclick="showRoom('Chambre 1','Première chambre de l’appartement.','chambre1.jpeg')">
+            Chambre 1
+        </button>
 
-<button onclick="showRoom('Chambre 2','Deuxième chambre','chambre2.jpeg')">Chambre 2</button>
+        <button onclick="showRoom('Chambre 2','Deuxième chambre de l’appartement.','chambre2.jpeg')">
+            Chambre 2
+        </button>
 
-<button onclick="showRoom('Salon','Pièce principale','salon.jpeg')">Salon</button>
+        <button onclick="showRoom('Salon','Pièce principale de vie.','salon.jpeg')">
+            Salon
+        </button>
 
-<button onclick="showRoom('Chambre 3','Troisième chambre','chambre3.jpeg')">Chambre 3</button>
+        <button onclick="showRoom('Chambre 3','Troisième chambre de l’appartement.','chambre3.jpeg')">
+            Chambre 3
+        </button>
 
-<button onclick="showRoom('Cuisine','Cuisine équipée','cuisine.jpeg')">Cuisine</button>
+        <button onclick="showRoom('Cuisine','Cuisine équipée.','cuisine.jpeg')">
+            Cuisine
+        </button>
 
-<button onclick="showRoom('Salle de bains','Salle de bains','salle-de-bain.jpeg')">Salle de bains</button>
-</div>
+        <button onclick="showRoom('Salle de bains','Salle de bains de l’appartement.','salle-de-bain.jpeg')">
+            Salle de bains
+        </button>
+    </div>
 
-<div class="viewer">
-hall-entree.jpeg
+    <div class="viewer">
 
-<div id="titre">Hall d’entrée</div>
+        hall-entree.jpeg
 
-<div id="description">
-Le hall dessert, de gauche à droite : Chambre 1, Chambre 2, Salon, Chambre 3, Cuisine et Salle de bains.
-</div>
+        <div id="titre">
+            Hall d’entrée
+        </div>
 
-</div>
+        <div id="description">
+            Le hall dessert de gauche à droite : Chambre 1, Chambre 2, Salon, Chambre 3, Cuisine et Salle de bains.
+        </div>
+
+    </div>
 
 </div>
 
 <script>
 
-function showRoom(titre, description, image){
-
+function showRoom(titre, description, image) {
     document.getElementById("photo").src = image;
-
     document.getElementById("titre").textContent = titre;
-
     document.getElementById("description").textContent = description;
 }
 
